@@ -1,0 +1,342 @@
+* {
+  background-color: #121212;
+  color: white;
+  font-size: 24px;
+}
+
+.main-body {
+  width: 80vw;
+  margin: auto;
+}
+
+.movies-main {
+  gap: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 75%;
+      grid-template-columns: 20% 75%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+.movies-main .ItemList {
+  -ms-grid-column-align: start;
+      justify-self: start;
+  width: 100%;
+}
+
+.movies-main .ItemList h5 {
+  font-size: 82px;
+  margin: 20px;
+}
+
+.movies-main .ItemList img {
+  background-color: #a08324;
+  width: 100%;
+}
+
+.movies-main .ItemList .Item {
+  margin: 5px;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #302100;
+  width: auto;
+  max-width: 20%;
+  min-height: 10rem;
+  max-height: 20rem;
+}
+
+.movies-main .ItemList .Item a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 30px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #3b3b3b;
+  width: 100%;
+}
+
+.movies-main .ItemList .ItemList-movies {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.movies-main .view-options {
+  margin-top: 100px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  border: lightgray solid 1px;
+  border-radius: 10px;
+}
+
+.movies-main .view-options .Filters, .movies-main .view-options .Sorting {
+  font-size: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.movies-main .view-options .Filters div, .movies-main .view-options .Sorting div {
+  border: gray solid 1px;
+  border-radius: 15px;
+}
+
+.movies-main .view-options .Filters form, .movies-main .view-options .Sorting form {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.movies-main .view-options .Filters form .company, .movies-main .view-options .Sorting form .company {
+  width: 100%;
+}
+
+.movies-main .view-options .Filters form .company select, .movies-main .view-options .Sorting form .company select {
+  width: 100%;
+}
+
+.movies-main .view-options .Filters form .manu, .movies-main .view-options .Sorting form .manu {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.movies-main .view-options .Filters form .manu label, .movies-main .view-options .Sorting form .manu label {
+  width: 100%;
+}
+
+.movies-main .view-options .Filters form .rgb, .movies-main .view-options .Sorting form .rgb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+}
+
+.movies-main .view-options .Filters form .rgb input, .movies-main .view-options .Sorting form .rgb input {
+  width: 25%;
+}
+
+.movies-main .view-options .Filters form button, .movies-main .view-options .Sorting form button {
+  width: 75%;
+  height: 55px;
+}
+
+.movies-main .view-options .Sorting {
+  margin-top: 50px;
+}
+
+.movies-main .view-options .Sorting .sort-select {
+  width: 100%;
+}
+
+.movie-submit-form {
+  margin: auto;
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.movie-submit-form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.movie-submit-form div input {
+  width: 100%;
+}
+
+.movie-submit-form .form-rgb input {
+  height: 30px;
+}
+
+.movie-submit-form .form-imageurl textarea {
+  min-width: 100%;
+}
+
+.movie-submit-form .error {
+  color: red;
+}
+
+input {
+  border-radius: 10px;
+  background-color: #3b3b3b;
+}
+
+button {
+  border-radius: 10px;
+  background-color: #ffd000;
+  color: black;
+  height: 3em;
+}
+
+div {
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.details img {
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.details div {
+  font-size: 30px;
+}
+
+.details button {
+  margin-top: 10px;
+  width: 200px;
+}
+
+.details .producent-link a {
+  font-size: 40px;
+}
+
+.released-card a {
+  font-size: 30px;
+}
+
+h5 {
+  font-size: 40px;
+}
+
+.Navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 60px;
+  margin: auto;
+  background-color: #525252;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.Navbar ul {
+  height: 100%;
+  background-color: #6b6b6b;
+  width: 30vw;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Navbar li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #6b6b6b;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Navbar li a {
+  font-size: 28px;
+  background-color: #6b6b6b;
+}
+
+.Navbar li:nth-of-type(2) {
+  border-left: lightgray solid 1px;
+  border-right: lightgray solid 1px;
+}
+
+.ItemList {
+  margin-top: 10px;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.manu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.manu input {
+  height: 25px;
+  width: 10%;
+}
+
+.rgb input {
+  height: 50px;
+}
+
+.ItemList button {
+  width: 50%;
+  height: 2em;
+}
+
+.App {
+  text-align: center;
+}
+/*# sourceMappingURL=App.css.map */

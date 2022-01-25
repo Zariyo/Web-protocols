@@ -1,1 +1,2 @@
-api
+# REST API dla bazy MongoDB
+

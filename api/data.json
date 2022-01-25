@@ -1,0 +1,54 @@
+{
+	"movies": 
+[
+	{
+		"_id": "61dc95c73916889fd4000000",
+		"name": "Iniemamocni",
+		"genre": ["Akcja","Animacja"],
+		"releaseDate": "2020-12-12",
+		"director": "Mike Wazowski",
+		"scores": [3,2,5],
+		"imageurl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Symbol_from_The_Incredibles_logo.svg/1200px-Symbol_from_The_Incredibles_logo.svg.png"
+	},
+	{
+		"_id": "61dc96f8edbc9f1c04000000",
+		"name": "Diuna",
+		"genre": ["Fabularny","Akcja"],
+		"releaseDate": "2020-12-12",
+		"director": "Jan Kowalski",
+		"scores": [5,5,4]
+	},
+	{
+		"_id": "61dc97112c23c8e045000000",
+		"name": "Shrek",
+		"genre": ["Animacja","Akcja","Fantasy"],
+		"releaseDate": "2020-12-14",
+		"director": "Adam Kowal",
+		"scores": [5,5,5]
+	}
+	
+],
+"users":
+[
+	{
+		"_id": "61e169981ed20c52c457c4f9",
+		"username": "adam02",
+		"email": "adam02@op.pl",
+		"password": "hash",
+		"imageurl": "https://logos-world.net/wp-content/uploads/2020/11/MSI-Logo-2011-2019.png"
+	},
+	{
+		"_id": "61e16a126176558a2bb636df",
+		"username": "krytykfilmowy",
+		"email": "krytyk.filmowy@gmail.com",
+		"password": "hash123"
+	},
+	{
+		"_id": "61e84b09edb7ef77f2898c43",
+		"username": "jankowal",
+		"email": "jkowal@wp.pl",
+		"password": "hash12345",
+		"imgurl": "https://www.amd.com/system/files/24937-sapphire-logo-1260x709.png"
+	}
+]
+}

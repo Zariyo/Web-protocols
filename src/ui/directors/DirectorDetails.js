@@ -10,14 +10,16 @@ const DirectorDetails = ({ producents, director, history, editDirectorAction }, 
             return director.imageurl
         }
         else {
-            return 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/director-alt2-512.png'
+            return 'https://cdn-icons-png.flaticon.com/512/3522/3522902.png'
         }
     }
 
     return (
 
         <div>
+            <button onClick={() => (history.goBack())}>Powrót</button>
             <h5>{director.name}</h5>
+            
             <div>
                 <div className="details">
 

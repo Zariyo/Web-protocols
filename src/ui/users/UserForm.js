@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { addUserAction } from "../../ducks/users/UserActions";
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+const { createHash } = require('crypto')
 const axios = require('axios')
 
 const UserForm = ({ history, addUserAction }, props) => {
@@ -13,6 +14,7 @@ const UserForm = ({ history, addUserAction }, props) => {
 
     const handleSubmit = async (values) => {
         try {
+            values.password = createHash('sha256').update(values.password).digest('hex')
             const userToAdd = await axios.post("http://localhost:5000/users", values)
             console.log(userToAdd.data)
             addUserAction(userToAdd.data);

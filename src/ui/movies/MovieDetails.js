@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import { editMovieAction } from "../../ducks/movies/MovieActions";
 const _ = require('lodash')
 
-const MovieDetails = ({ producents, movie, history, editMovieAction }, props) => {
+const MovieDetails = ({ producents, movie, history,actors, editMovieAction }, props) => {
 
 
     const getUrl = (movie) => {
@@ -27,6 +27,7 @@ const MovieDetails = ({ producents, movie, history, editMovieAction }, props) =>
     return (
 
         <div>
+            <button onClick={() => (history.goBack())}>Powrót</button>
             <h5>{movie.name}</h5>
             <div>
                 <div className="details">
@@ -57,10 +58,10 @@ const MovieDetails = ({ producents, movie, history, editMovieAction }, props) =>
 
 
 const mapStateToProps = (state, props) => {
-    console.log(props.match.path.includes('movies'))
     return {
     movie: state.movies.find(movie => movie._id === props.match.params.id),
-    producents: state.producents
+    producents: state.producents,
+    actors: state.actors
 }};
 
 const mapDispatchToProps = {

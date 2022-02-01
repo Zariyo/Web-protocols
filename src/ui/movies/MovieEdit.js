@@ -38,88 +38,50 @@ const MovieForm = ({ movie, history, editMovieAction }, props) => {
 
     return (
         <div>
-            <h3>Film</h3>
+            <h3>Edycja Filmu</h3>
             <Formik
                 initialValues={{
                     name: movie.name,
-                    series: movie.series,
-                    releaseDate: movie.releaseDate,
-                    architecture: movie.architecture,
-                    company: movie.company,
-                    aib: movie.aib,
-                    model: movie.model,
-                    score: movie.score,
-                    imageurl: movie.imageurl,
-                    rgb: movie.rgb,
+                    genre: movie.genre,
+                    releaseDate: new Date(movie.releaseDate).toISOString().slice(0, 10),
+                    director: movie.director,
+                    imageurl: movie.imageurl
                 }}
                 onSubmit={(values) => handleSubmit(values)}
                 enableReinitialize={true}
                 validationSchema={movieSchema}>
                 <Form>
                     <div className="movie-submit-form">
-                        Firma
-                        <div className="manu">
-                            <label>
-                                AMD
-                                <Field type="radio" name="company" value="AMD" />
-                            </label>
-                            <label>
-                                Nvidia
-                                <Field type="radio" name="company" value="Nvidia" />
-                                <ErrorMessage name="company" className="error" component="div" />
-                            </label>
-                        </div>
                         Nazwa filmu
                         <div className="form-name">
-                            <Field name="name" />
+                            <Field name="name" /><br />
                             <ErrorMessage name="name" className="error" component="div" />
                         </div>
-                        <div className="form-series">
-                            Seria filmu
-                            <Field name="series" />
-                            <ErrorMessage name="series" className="error" component="div" />
+                        <div className="form-genre">
+                            Kategoria filmu
+                            <Field name="genre" /><br />
+                            <ErrorMessage name="genre" className="error" component="div" />
                         </div>
                         <div className="form-releaseDate">
                             Data wydania
-                            <Field name="releaseDate" type="date" />
+                            <Field name="releaseDate" type="date" /><br />
                             <ErrorMessage name="releaseDate" className="error" component="div" />
                         </div>
-                        <div className="form-architecture">
-                            Architektura
-                            <Field name="architecture" />
-                            <ErrorMessage name="architecture" className="error" component="div" />
-                        </div>
-                        <div className="form-aib">
-                            Producent
-                            <Field name="aib" />
-                            <ErrorMessage name="aib" className="error" component="div" />
-                        </div>
-                        <div className="form-model">
-                            Model filmu
-                            <Field name="model" />
-                            <ErrorMessage name="model" className="error" component="div" />
+                        <div className="form-director">
+                            Reżyser
+                            <Field name="director" /><br />
+                            <ErrorMessage name="director" className="error" component="div" />
                         </div>
                         <div className="form-imageurl">
                             Adres do zdjecia
-                            <Field name="imageurl" />
+                            <Field as="textarea" name="imageurl" />
                             <ErrorMessage name="imageurl" className="error" component="div" />
                         </div>
-                        <div className="form-rgb">
-                            RGB
-                            <Field type="checkbox" name="rgb" />
-                            <ErrorMessage name="rgb" className="error" component="div" />
-                        </div>
-                        <div className="form-score">
-                            Wynik benchmark
-                            <Field name="score" />
-                            <ErrorMessage name="score" className="error" component="div" />
-                        </div >
                         <button type="submit">
                             Zatwierdz
                         </button>
                     </div>
                 </Form>
-
             </Formik>
         </div>
     )

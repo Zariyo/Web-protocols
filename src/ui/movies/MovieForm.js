@@ -27,7 +27,7 @@ const MovieForm = ({ history, addMovieAction }, props) => {
 
     const movieSchema = Yup.object().shape({
         name: Yup.string("Nazwa musi byc typu string").required("Nazwa filmu jest wymagana"),
-        genre: Yup.string("Kategoria musi byc typu string").required("Kategoria filmu jest wymagana"),
+        genre: Yup.array().required("Kategoria filmu jest wymagana"),
         releaseDate: Yup.date("Data musi byc typu daty").required("Data wydania filmu jest wymagana"),
         director: Yup.string("Reżyser musi byc typu string").required("Reżyser filmu jest wymagany"),
         scores: Yup.array("Oceny musza byc tablica"),
@@ -52,22 +52,61 @@ const MovieForm = ({ history, addMovieAction }, props) => {
                     <div className="movie-submit-form">
                         Nazwa filmu
                         <div className="form-name">
-                            <Field name="name" /><br />
+                            <Field name="name" />
                             <ErrorMessage name="name" className="error" component="div" />
                         </div>
                         <div className="form-genre">
-                            Kategoria filmu
-                            <Field name="genre" /><br />
+                            Kategorie filmu
+                            <div>
+                            <label>
+                            Akcja
+                                <Field type="checkbox" name="genre" value="Akcja" />
+                                
+                            </label>
+                            <label>
+                            Przygodowy
+                                <Field type="checkbox" name="genre" value="Przygodowy" />
+                                
+                            </label>
+                            <label>
+                            Thriller
+                                <Field type="checkbox" name="genre" value="Thriller" />
+                            </label>
+                            <label>
+                            Komedia
+                                <Field type="checkbox" name="genre" value="Komedia" />
+                            </label>
+                            <label>
+                            Dramat
+                                <Field type="checkbox" name="genre" value="Dramat" />
+                            </label>
+                            <label>
+                            Horror
+                                <Field type="checkbox" name="genre" value="Horror" />
+                            </label>
+                            <label>
+                            Science fiction
+                                <Field type="checkbox" name="genre" value="Science fiction" />
+                            </label>
+                            <label>
+                            Wojenny
+                                <Field type="checkbox" name="genre" value="Wojenny" />
+                            </label>
+                            <label>
+                            Romantyczny
+                                <Field type="checkbox" name="genre" value="Romantyczny" />
+                            </label>
                             <ErrorMessage name="genre" className="error" component="div" />
+                            </div>
                         </div>
                         <div className="form-releaseDate">
                             Data wydania
-                            <Field name="releaseDate" type="date" /><br />
+                            <Field name="releaseDate" type="date" />
                             <ErrorMessage name="releaseDate" className="error" component="div" />
                         </div>
                         <div className="form-director">
                             Reżyser
-                            <Field name="director" /><br />
+                            <Field name="director" />
                             <ErrorMessage name="director" className="error" component="div" />
                         </div>
                         <div className="form-imageurl">

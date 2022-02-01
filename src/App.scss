@@ -10,7 +10,7 @@
     margin: auto;
 }
 
-.movies-main, .directors-main, .actors-main{
+.movies-main, .directors-main, .actors-main, .users-main, .chats-main{
     gap: 20px;
     display:grid;
     grid-template-columns: 20% 75%;
@@ -51,7 +51,7 @@
             background-color: #3b3b3b;
             width: 100%;
           }
-        .ItemList-movies, .ItemList-directors, .ItemList-actors{ 
+        .ItemList-movies, .ItemList-directors, .ItemList-actors, .ItemList-users{ 
             margin-top: 20px;
             display: flex;
             flex-wrap: wrap;
@@ -115,6 +115,36 @@
             }
         }
     }
+}
+
+.users-main, .chats-main{
+    grid-template-columns: 100%;
+}
+
+.chats-main{
+    .ItemList-chats{
+        display: flex;
+            flex-wrap: wrap;
+        justify-self: start;
+        width: 100%;
+    
+    .Item{
+        display:flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            font-size: 30px;
+            border-radius: 10px;
+            width: 100%;
+        min-width: 66%;
+        min-height: 0;
+        height: auto;
+        a{
+            width:100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
 }
 
 .movie-submit-form, .actor-submit-form, .director-submit-form, .user-submit-form{
@@ -217,6 +247,10 @@
     justify-content: center;
   }
   .Navbar li{
+      padding-left: 10px;
+      padding-right: 10px;
+      border-left: lightgray solid 1px;
+      border-right: lightgray solid 1px;
       display: flex;
       background-color: rgb(107, 107, 107);
       width: 100%;
@@ -229,16 +263,15 @@
         background-color: rgb(107, 107, 107);
     }
   }
-  .Navbar li:nth-of-type(2){
-      border-left: lightgray solid 1px;
-      border-right: lightgray solid 1px;
-  }
   
   .ItemList{
     margin-top: 10px;
     text-align: center;
     justify-content: center;
     align-items: center;
+    .button-find{
+        width: 20%;
+    }
   }
   
   .manu{

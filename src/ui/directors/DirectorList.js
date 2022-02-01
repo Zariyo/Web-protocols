@@ -30,32 +30,13 @@ const DirectorList = ({ directors, addDirectorAction, deleteDirectorAction, getD
         }
     }
 
-    const filterDirectors = (values) => {
-        console.log("filtering")
-        console.log(values)
-        let filteredDirectors = directors
-        if (values.company) {
-            filteredDirectors = _.filter(filteredDirectors, { 'aib': values.company })
-        }
-        if (values.manu) {
-            filteredDirectors = _.filter(filteredDirectors, { 'company': values.manu })
-        }
-        if (values.rgb) {
-            filteredDirectors = _.filter(filteredDirectors, { 'rgb': true })
-        }
-        setDirectorsTemp(filteredDirectors)
-    }
-
     const sortDirectors = (values) => {
         console.log("sorting by " + values.type)
         if (values.type === "alphabet") {
-            setDirectorsTemp(_.sortBy(directorsTemp, ['aib', 'name', 'model']))
+            setDirectorsTemp(_.sortBy(directorsTemp, ['surname', 'name']))
         }
         if (values.type === "datetime") {
-            setDirectorsTemp(_.sortBy(directorsTemp, ['releaseDate', 'aib']))
-        }
-        if (values.type === "score") {
-            setDirectorsTemp(_.sortBy(directorsTemp, ['score', 'aib']))
+            setDirectorsTemp(_.sortBy(directorsTemp, ['birthDate', 'surname']))
         }
     }
 
@@ -64,7 +45,7 @@ const DirectorList = ({ directors, addDirectorAction, deleteDirectorAction, getD
             return director.imageurl
         }
         else {
-            return 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/movie-alt2-512.png'
+            return 'https://cdn-icons-png.flaticon.com/512/3522/3522902.png'
         }
     }
 
@@ -74,49 +55,6 @@ const DirectorList = ({ directors, addDirectorAction, deleteDirectorAction, getD
 
 
             <div className="view-options">
-                <div className="Filters">
-                    Filtrowanie
-                    <Formik
-                        initialValues={{
-                            company: '',
-                            manu: '',
-                            rgb: '',
-                        }}
-                        onSubmit={(values) => filterDirectors(values)}
-                        enableReinitialize={true}>
-                        <Form>
-                            <div className="company">
-                                Firma karty
-                                <Field as="select" name="company">
-                                    <option value="">Wybierz firme</option>
-                                    {/*_.uniq(_.map(directors, 'aib')).map(maker => <option key={maker} value={maker}>{maker}</option>)*/}
-                                </Field>
-                            </div>
-                            <div className="manu">
-                                Producent karty
-                                <label>
-                                    Brak
-                                    <Field type="radio" name="manu" value="" />
-                                </label>
-                                <label>
-                                    AMD
-                                    <Field type="radio" name="manu" value="AMD" />
-                                </label>
-                                <label>
-                                    Nvidia
-                                    <Field type="radio" name="manu" value="Nvidia" />
-                                </label>
-                            </div>
-                            <div className="rgb">
-                                <h1>Czy ma rgb?</h1>
-                                <Field type="checkbox" name="rgb" />
-                            </div>
-                            <button type="submit">
-                                Zatwierdz
-                            </button>
-                        </Form>
-                    </Formik>
-                </div>
                 <div className="Sorting">
                     Sortowanie
                     <Formik
@@ -130,8 +68,7 @@ const DirectorList = ({ directors, addDirectorAction, deleteDirectorAction, getD
                                 <Field as="select" name="type">
                                     <option key="1" value="-">Wybierz sortowanie</option>
                                     <option key="2" value="alphabet">Alfabetycznie</option>
-                                    <option key="3" value="datetime">Data wydania</option>
-                                    <option key="4" value="score">Wynik</option>
+                                    <option key="3" value="datetime">Data urodzenia</option>
                                 </Field>
                             </div>
                             <button type="submit">

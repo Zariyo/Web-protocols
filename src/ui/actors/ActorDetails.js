@@ -10,13 +10,14 @@ const ActorDetails = ({ producents, actor, history, editActorAction }, props) =>
             return actor.imageurl
         }
         else {
-            return 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/actor-alt2-512.png'
+            return 'https://cdn-icons-png.flaticon.com/512/3309/3309330.png'
         }
     }
 
     return (
 
         <div>
+            <button onClick={() => (history.goBack())}>Powrót</button>
             <h5>{actor.name}</h5>
             <div>
                 <div className="details">

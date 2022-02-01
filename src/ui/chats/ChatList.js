@@ -1,9 +1,7 @@
 import { connect } from "react-redux";
-import { Field, Form, Formik } from "formik"
 import { Link } from "react-router-dom"
 import { withRouter } from "react-router";
 import { deleteChatAction } from "../../ducks/chats/ChatActions";
-const _ = require('lodash')
 const ChatList = ({ movie, chats, user, director, actor, history, deleteChatAction }, props) => {
 
 
@@ -12,10 +10,10 @@ const ChatList = ({ movie, chats, user, director, actor, history, deleteChatActi
     const listChats = () =>{
         if(movie){
             return (
-                <div className="movie-chats">
+                <div className="chats">
                     <Link to={`/movies/${movie._id}/chat/add`}> <button>Dodaj nowy czat</button></Link>
 
-                    <div className="ItemList-movies">
+                    <div className="ItemList-chats">
                         {chats.map(chat => {
                             if(chat.type==='movies' && chat.owner===movie._id){
                             return (
@@ -34,10 +32,10 @@ const ChatList = ({ movie, chats, user, director, actor, history, deleteChatActi
         }
         else if(user){
             return(
-                <div className="user-chats">
+                <div className="chats">
                     <Link to={`/users/${user.username}/chat/add`}> <button>Dodaj nowy czat</button></Link>
 
-                    <div className="ItemList-users">
+                    <div className="ItemList-chats">
                         {chats.map(chat => {
                             if(chat.type==='users' && chat.owner===user._id){
                             return (
@@ -56,10 +54,10 @@ const ChatList = ({ movie, chats, user, director, actor, history, deleteChatActi
         }
         if(director){
             return (
-                <div className="movie-chats">
+                <div className="chats">
                     <Link to={`/directors/${director._id}/chat/add`}> <button>Dodaj nowy czat</button></Link>
 
-                    <div className="ItemList-directors">
+                    <div className="ItemList-chats">
                         {chats.map(chat => {
                             if(chat.type==='director' && chat.owner===director._id){
                             return (
@@ -102,77 +100,8 @@ const ChatList = ({ movie, chats, user, director, actor, history, deleteChatActi
 
     return (
 
-        <div className="movies-main">
+        <div className="chats-main">
 
-
-            <div className="view-options">
-                <div className="Filters">
-                    Filtrowanie
-                    <Formik
-                        initialValues={{
-                            company: '',
-                            manu: '',
-                            rgb: '',
-                        }}
-                        onSubmit={(values) => (null)}//filterMovies(values)}
-                        enableReinitialize={true}>
-                        <Form>
-                            <div className="company">
-                                Firma karty
-                                <Field as="select" name="company">
-                                    <option value="">Wybierz firme</option>
-                                    {_.uniq(_.map(null, 'aib')).map(maker => <option key={maker} value={maker}>{maker}</option>)}
-                                </Field>
-                            </div>
-                            <div className="manu">
-                                Producent karty
-                                <label>
-                                    Brak
-                                    <Field type="radio" name="manu" value="" />
-                                </label>
-                                <label>
-                                    AMD
-                                    <Field type="radio" name="manu" value="AMD" />
-                                </label>
-                                <label>
-                                    Nvidia
-                                    <Field type="radio" name="manu" value="Nvidia" />
-                                </label>
-                            </div>
-                            <div className="rgb">
-                                <h1>Czy ma rgb?</h1>
-                                <Field type="checkbox" name="rgb" />
-                            </div>
-                            <button type="submit">
-                                Zatwierdz
-                            </button>
-                        </Form>
-                    </Formik>
-                </div>
-                <div className="Sorting">
-                    Sortowanie
-                    <Formik
-                        initialValues={{
-                            type: '',
-                        }}
-                        onSubmit={(values) => (null)}
-                        enableReinitialize={true}>
-                        <Form>
-                            <div className="sort-select">
-                                <Field as="select" name="type">
-                                    <option key="1" value="-">Wybierz sortowanie</option>
-                                    <option key="2" value="alphabet">Alfabetycznie</option>
-                                    <option key="3" value="datetime">Data wydania</option>
-                                    <option key="4" value="score">Wynik</option>
-                                </Field>
-                            </div>
-                            <button type="submit">
-                                Zatwierdz
-                            </button>
-                        </Form>
-                    </Formik>
-                </div>
-            </div>
             <div className="ItemList">
                 <h5>Czaty</h5>
                 {listChats()}

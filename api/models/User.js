@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 // Schema domyślnie dodaje unikalne pole _id, dlatego pomijamy je w deklaracji
-const producentSchema = new Schema({
+const userSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -19,4 +19,4 @@ const producentSchema = new Schema({
     }
 });
 
-module.exports = model('Producent', producentSchema);
+module.exports = model('User', userSchema);

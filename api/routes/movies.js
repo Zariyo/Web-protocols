@@ -66,15 +66,11 @@ router.put('/:id', async (req, res) => {
   const movie = new Movie({
     _id: id,
     name: req.body.name,
-    series: req.body.series,
+    genre: req.body.genre,
     releaseDate: req.body.releaseDate,
-    architecture: req.body.architecture,
-    company: req.body.company,
-    aib: req.body.aib,
-    model: req.body.model,
-    score: req.body.score,
-    imageurl: req.body.imageurl,
-    rgb: req.body.rgb
+    director: req.body.director,
+    scores: req.body.scores,
+    imageurl: req.body.imageurl
   })
 
   try {

@@ -63,13 +63,10 @@ router.put('/:id', async (req, res) => {
   let id = req.params.id
   const user = new User({
     _id: id,
-    name: req.body.name,
-    phone: req.body.phone,
-    address: req.body.address,
-    country: req.body.country,
-    supports: req.body.supports,
-    imgurl: req.body.imgurl,
-    creationDate: req.body.creationDate
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    imageurl: req.body.imageurl,
   })
 
   try {

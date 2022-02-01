@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const movies = require('./routes/movies');
 const users = require('./routes/users')
+const directors = require('./routes/directors')
+const actors = require('./routes/actors')
 const cors = require('cors');
 
 app.use(express.json());
@@ -9,6 +11,8 @@ app.use(cors())
 // „Podłączamy” obsługę „endpointów”, które zdefiniowaliśmy dla kolekcji 'movies' w katalogu routes/movies.js
 app.use('/movies', movies);
 app.use('/users', users)
+app.use('/directors', directors)
+app.use('/actors', actors)
 
 
 require('dotenv').config();

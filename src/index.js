@@ -10,6 +10,9 @@ import { Provider } from 'react-redux';
 import { movieReducer } from './ducks/movies/MovieReducer'
 import { userReducer } from './ducks/users/UserReducer'
 import logger from './middlewares/Logger';
+import { directorReducer } from './ducks/directors/DirectorReducer';
+import { actorReducer } from './ducks/actors/ActorReducer';
+import { chatReducer } from './ducks/chats/ChatReducer';
 
 
 let store = createStore(
@@ -17,6 +20,9 @@ let store = createStore(
     {
       movies: movieReducer,
       users: userReducer,
+      directors: directorReducer,
+      actors: actorReducer,
+      chats: chatReducer
     }
   ), applyMiddleware(thunk,createMiddleware(), logger));
 

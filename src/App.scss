@@ -10,7 +10,7 @@
     margin: auto;
 }
 
-.movies-main{
+.movies-main, .directors-main, .actors-main{
     gap: 20px;
     display:grid;
     grid-template-columns: 20% 75%;
@@ -51,7 +51,7 @@
             background-color: #3b3b3b;
             width: 100%;
           }
-        .ItemList-movies{
+        .ItemList-movies, .ItemList-directors, .ItemList-actors{ 
             margin-top: 20px;
             display: flex;
             flex-wrap: wrap;
@@ -117,7 +117,7 @@
     }
 }
 
-.movie-submit-form{
+.movie-submit-form, .actor-submit-form, .director-submit-form, .user-submit-form{
     margin: auto;
     width: 500px;
     display: flex;

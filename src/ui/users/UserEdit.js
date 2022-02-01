@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 const axios = require('axios')
 
-const UserForm = ({ user, history, editUserAction }, props) => {
+const UserEdit = ({ history, editUserAction, user }, props) => {
     useEffect(() => {
         console.log(props.users);
     }, [props])
@@ -14,6 +14,7 @@ const UserForm = ({ user, history, editUserAction }, props) => {
     const handleSubmit = async (values) => {
         try {
             const userToAdd = await axios.put(`http://localhost:5000/users/${user._id}`, values)
+            console.log("123")
             console.log(userToAdd.data)
             editUserAction(userToAdd.data);
         }
@@ -25,85 +26,61 @@ const UserForm = ({ user, history, editUserAction }, props) => {
     }
 
     const userSchema = Yup.object().shape({
-        name: Yup.string("Nazwa musi byc typu string").required("Nazwa usera jest wymagana"),
-        phone: Yup.number("Numer telefonu musi byc typu numerycznego").required("Numer kontaktowy jest wymagany"),
-        creationDate: Yup.date("Data musi byc typu daty").required("Data powstania usera jest wymagana"),
-        address: Yup.string("Adres musi byc typu string").required("Adres usera jest wymagany"),
-        country: Yup.string("Panstwo musi byc typu string").required("Panstwo usera jest wymagane"),
-        imgurl: Yup.string("Link musi byc typu string").url("Nieprawidlowy URL linku"),
+        username: Yup.string("Nazwa musi byc typu string").required("Imie jest wymagane"),
+        password: Yup.string("Hasło musi byc typu string").required("Hasło jest wymagane"),
+        email: Yup.string("Email musi byc typu string").email("Nieprawidlowy adres email").required("Email jest wymagany"),
+        imageurl: Yup.string("Link musi byc typu string").url("Nieprawidlowy URL linku")
     })
 
     return (
         <div>
-            <h3>Karta</h3>
+            <h3>Edycja użytkownika</h3>
             <Formik
                 initialValues={{
-                    _id: user._id,
-                    name: user.name,
-                    phone: user.phone,
-                    address: user.address,
-                    country: user.country,
-                    supports: user.supports,
-                    imgurl: user.imgurl,
-                    creationDate: user.creationDate,
+                    username: user.username,
+                    email: user.email,
+                    password: user.password,
+                    imageurl: user.imageurl
                 }}
                 onSubmit={(values) => handleSubmit(values)}
                 enableReinitialize={true}
                 validationSchema={userSchema}>
                 <Form>
-                    <div className="card-submit-form">
-                        <div className="supports">
-                            AMD
-                            <Field type="checkbox" name="supports" value="amd" />
-                            Nvidia
-                            <Field type="checkbox" name="supports" value="nvidia" />
-                            <ErrorMessage name="supports" className="error" component="div" />
+                    <div className="user-submit-form">
+                        Nazwa użytkownika
+                        <div className="form-username">
+                            <Field name="username" />
+                            <ErrorMessage name="username" className="error" component="div" />
                         </div>
-                    
-                    <div className="form-name">
-                        Nazwa firmy
-                        <Field name="name" />
-                        <ErrorMessage name="name" className="error" component="div" />
+                        <div className="form-email">
+                            Email
+                            <Field name="email" />
+                            <ErrorMessage name="email" className="error" component="div" />
+                        </div>
+                        <div className="form-password">
+                            Hasło
+                            <Field name="password" />
+                            <ErrorMessage name="password" className="error" component="div" />
+                        </div>
+                        <div className="form-imageurl">
+                            Adres do zdjecia
+                            <Field as="textarea" name="imageurl" />
+                            <ErrorMessage name="imageurl" className="error" component="div" />
+                        </div>
+                        <button type="submit">
+                            Zatwierdz
+                        </button>
                     </div>
-                    <div className="form-phone">
-                        Telefon firmy
-                        <Field name="phone" />
-                        <ErrorMessage name="phone" className="error" component="div" />
-                    </div>
-                    <div className="form-address">
-                        Adres firmy
-                        <Field name="address" />
-                        <ErrorMessage name="address" className="error" component="div" />
-                    </div>
-                    <div className="form-country">
-                        Kraj firmy
-                        <Field name="country" />
-                        <ErrorMessage name="country" className="error" component="div" />
-                    </div>
-                    <div className="form-imageurl">
-                        Adres do zdjecia
-                        <Field as="textarea" name="imgurl" />
-                        <ErrorMessage name="imgurl" className="error" component="div" />
-                    </div>
-                    <div className="form-creationDate">
-                        Data założenia
-                        <Field name="creationDate" type="date" />
-                        <ErrorMessage name="creationDate" className="error" component="div" />
-                    </div>
-                    <button type="submit">
-                        Zatwierdz
-                    </button>
-                </div>
-            </Form>
-        </Formik>
-        </div >
+                </Form>
+            </Formik>
+        </div>
     )
 }
 
 const mapStateToProps = (state, props) => {
     return {
-        users: state.users,
-        user: state.users.find(user => user.name === props.match.params.name)
+        user: state.users.find(user => user.username === props.match.params.name),
+
     }
 };
 
@@ -112,4 +89,4 @@ const mapDispatchToProps = {
 };
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserEdit));

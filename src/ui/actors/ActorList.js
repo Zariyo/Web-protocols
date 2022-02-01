@@ -2,77 +2,75 @@ import { connect } from "react-redux";
 import { Field, Form, Formik } from "formik"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
-import { addMovieAction, deleteMovieAction, updateMoviesAction, completeMovieAction } from "../../ducks/movies/MovieActions";
-import { getMovies } from "../../ducks/movies/MovieOperations";
-import { deleteMovie } from "../../ducks/movies/MovieOperations";
-import {v4 as uuidv4 } from 'uuid';
+import { addActorAction, deleteActorAction, updateActorsAction, completeActorAction } from "../../ducks/actors/ActorActions";
+import { getActors } from "../../ducks/actors/ActorOperations";
+import { deleteActor } from "../../ducks/actors/ActorOperations";
 const _ = require('lodash')
-const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
+const ActorList = ({ actors, addActorAction, deleteActorAction, getActors, deleteActor }, props) => {
 
-    const [moviesTemp, setMoviesTemp] = useState(movies)
+    const [actorsTemp, setActorsTemp] = useState(actors)
 
     useEffect(() => {
-        setMoviesTemp(movies)
-        if (movies.length === 0) {
-            getMovies()
+        setActorsTemp(actors)
+        if (actors.length === 0) {
+            getActors()
         }
-    }, [getMovies, movies])
+    }, [actors, getActors])
 
     
-    const getMoviesTemp = async (movie) => {
-        console.log("getting movies temp")
-        await getMovies()
-        setMoviesTemp(movies)
+    const getActorsTemp = async (actor) => {
+        console.log("getting actors temp")
+        await getActors()
+        setActorsTemp(actors)
     }
     
-    const noMovies = () => {
-        if (moviesTemp.length === 0) {
-            return <button onClick={() => getMoviesTemp()}>Odswiez dane</button>
+    const noActors = () => {
+        if (actorsTemp.length === 0) {
+            return <button onClick={() => getActorsTemp()}>Odswiez dane</button>
         }
     }
 
-    const filterMovies = (values) => {
+    const filterActors = (values) => {
         console.log("filtering")
         console.log(values)
-        let filteredMovies = movies
+        let filteredActors = actors
         if (values.company) {
-            filteredMovies = _.filter(filteredMovies, { 'aib': values.company })
+            filteredActors = _.filter(filteredActors, { 'aib': values.company })
         }
         if (values.manu) {
-            filteredMovies = _.filter(filteredMovies, { 'company': values.manu })
+            filteredActors = _.filter(filteredActors, { 'company': values.manu })
         }
         if (values.rgb) {
-            filteredMovies = _.filter(filteredMovies, { 'rgb': true })
+            filteredActors = _.filter(filteredActors, { 'rgb': true })
         }
-        setMoviesTemp(filteredMovies)
+        setActorsTemp(filteredActors)
     }
 
-    const sortMovies = (values) => {
+    const sortActors = (values) => {
         console.log("sorting by " + values.type)
         if (values.type === "alphabet") {
-            setMoviesTemp(_.sortBy(moviesTemp, ['aib', 'name', 'model']))
+            setActorsTemp(_.sortBy(actorsTemp, ['aib', 'name', 'model']))
         }
         if (values.type === "datetime") {
-            setMoviesTemp(_.sortBy(moviesTemp, ['releaseDate', 'aib']))
+            setActorsTemp(_.sortBy(actorsTemp, ['releaseDate', 'aib']))
         }
         if (values.type === "score") {
-            setMoviesTemp(_.sortBy(moviesTemp, ['score', 'aib']))
+            setActorsTemp(_.sortBy(actorsTemp, ['score', 'aib']))
         }
     }
 
-    const getUrl = (movie) => {
-        if (movie.imageurl) {
-            return movie.imageurl
+    const getUrl = (actor) => {
+        if (actor.imageurl) {
+            return actor.imageurl
         }
         else {
-            return 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/movie-alt2-512.png'
+            return 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/actor-alt2-512.png'
         }
     }
 
     return (
 
-        <div className="movies-main">
-            
+        <div className="actors-main">
 
 
             <div className="view-options">
@@ -84,14 +82,14 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
                             manu: '',
                             rgb: '',
                         }}
-                        onSubmit={(values) => filterMovies(values)}
+                        onSubmit={(values) => filterActors(values)}
                         enableReinitialize={true}>
                         <Form>
                             <div className="company">
                                 Firma karty
                                 <Field as="select" name="company">
                                     <option value="">Wybierz firme</option>
-                                    {_.uniq(_.map(movies, 'aib')).map(maker => <option key={uuidv4()} value={maker}>{maker}</option>)}
+                                    {_.uniq(_.map(actors, 'aib')).map(maker => <option key={maker} value={maker}>{maker}</option>)}
                                 </Field>
                             </div>
                             <div className="manu">
@@ -125,7 +123,7 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
                         initialValues={{
                             type: '',
                         }}
-                        onSubmit={(values) => sortMovies(values)}
+                        onSubmit={(values) => sortActors(values)}
                         enableReinitialize={true}>
                         <Form>
                             <div className="sort-select">
@@ -144,18 +142,18 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
                 </div>
             </div>
             <div className="ItemList">
-                <h5>Filmy</h5>
-                <Link to={`/movies/add`}> <button>Dodaj nowy film</button></Link>
-                {noMovies()}
-                <div className="ItemList-movies">
-                    {moviesTemp.map(movie => {
+                <h5>Aktorzy</h5>
+                <Link to={`/actors/add`}> <button>Dodaj nowego aktora</button></Link>
+                {noActors()}
+                <div className="ItemList-actors">
+                    {actorsTemp.map(actor => {
                         return (
-                            <div className="Item" key={movie._id}>
-                                <Link to={`/movies/${movie._id}`}>
-                                    <img alt="" src={getUrl(movie)}></img>
-                                    {movie.name}
+                            <div className="Item" key={actor._id}>
+                                <Link to={`/actors/${actor._id}`}>
+                                    <img alt="" src={getUrl(actor)}></img>
+                                    {actor.name}
                                 </Link>
-                                <button onClick={() => deleteMovie(movie)}>Usuń</button>
+                                <button onClick={() => deleteActor(actor)}>Usuń</button>
                             </div>)
                     })}
                 </div>
@@ -166,20 +164,19 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
 
 const mapStateToProps = (state) => {
     return {
-        
-        movies: state.movies,
+        actors: state.actors,
         downloaded: state.downloaded,
     };
 }
 
 const mapDispatchToProps = {
-    updateMoviesAction,
-    addMovieAction,
-    deleteMovieAction,
-    completeMovieAction,
-    getMovies,
-    deleteMovie
+    updateActorsAction,
+    addActorAction,
+    deleteActorAction,
+    completeActorAction,
+    getActors,
+    deleteActor
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
+export default connect(mapStateToProps, mapDispatchToProps)(ActorList);

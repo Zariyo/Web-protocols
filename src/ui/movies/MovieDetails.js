@@ -6,6 +6,7 @@ const _ = require('lodash')
 
 const MovieDetails = ({ producents, movie, history, editMovieAction }, props) => {
 
+
     const getUrl = (movie) => {
         if (movie.imageurl) {
             return movie.imageurl
@@ -45,6 +46,7 @@ const MovieDetails = ({ producents, movie, history, editMovieAction }, props) =>
                         } 
                         return score + ', '})}</div>
                     <Link to={`/movies/${movie._id}/edit`}><button>Edytuj</button></Link>
+                    <Link to={`/movies/${movie._id}/chat`}><button>Dyskusja</button></Link>
                 </div>
 
 
@@ -54,10 +56,12 @@ const MovieDetails = ({ producents, movie, history, editMovieAction }, props) =>
 };
 
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state, props) => {
+    console.log(props.match.path.includes('movies'))
+    return {
     movie: state.movies.find(movie => movie._id === props.match.params.id),
     producents: state.producents
-});
+}};
 
 const mapDispatchToProps = {
     editMovieAction

@@ -2,9 +2,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { editUserAction } from "../../ducks/users/UserActions";
-const _ = require('lodash')
 
-const UserDetails = ({ user, cards, history, editUserAction }, props) => {
+const UserDetails = ({ user }, props) => {
 
     const getUrl = (user) => {
         if (user.imageurl) {
@@ -23,12 +22,8 @@ const UserDetails = ({ user, cards, history, editUserAction }, props) => {
                 <div className="details">
                     <h5>{user.username}</h5>
                     <img alt="" src={getUrl(user)}></img>
-                    {/*<div>Siedziba firmy znajduje się w {user.address}, {user.country}</div>
-                    <div>Założona została dnia {new Date(user.creationDate).toLocaleDateString('pl-PL')}</div>
-                    <div>Numer kontaktowy do firmy: {user.phone}</div>
-                    <div>Wydaje karty dla: {user.supports.map(company => <div key={company}>{company}</div>)}</div>
-                    <div>Wydane karty: {_.filter(cards, { 'aib': user.name }).map(card => <div className="released-card" key={card._id}>{<Link to={`/cards/${card._id}`}>{card.name + ' ' + card.model}</Link>}</div>)}</div>
-    <Link to={`/users/${user.name}/edit`}><button>Edytuj</button></Link>*/}
+                    <div><Link to={`/users/${user.username}/edit`}><button>Edytuj</button></Link></div>
+                    <Link to={`/users/${user.username}/chat`}><button>Dyskusja</button></Link>
                 </div>
 
 

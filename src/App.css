@@ -9,7 +9,7 @@
   margin: auto;
 }
 
-.movies-main {
+.movies-main, .directors-main, .actors-main {
   gap: 20px;
   display: -ms-grid;
   display: grid;
@@ -20,23 +20,23 @@
           align-items: start;
 }
 
-.movies-main .ItemList {
+.movies-main .ItemList, .directors-main .ItemList, .actors-main .ItemList {
   -ms-grid-column-align: start;
       justify-self: start;
   width: 100%;
 }
 
-.movies-main .ItemList h5 {
+.movies-main .ItemList h5, .directors-main .ItemList h5, .actors-main .ItemList h5 {
   font-size: 82px;
   margin: 20px;
 }
 
-.movies-main .ItemList img {
+.movies-main .ItemList img, .directors-main .ItemList img, .actors-main .ItemList img {
   background-color: #a08324;
   width: 100%;
 }
 
-.movies-main .ItemList .Item {
+.movies-main .ItemList .Item, .directors-main .ItemList .Item, .actors-main .ItemList .Item {
   margin: 5px;
   border-radius: 15px;
   padding: 15px;
@@ -47,7 +47,7 @@
   max-height: 20rem;
 }
 
-.movies-main .ItemList .Item a {
+.movies-main .ItemList .Item a, .directors-main .ItemList .Item a, .actors-main .ItemList .Item a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,7 +63,7 @@
   width: 100%;
 }
 
-.movies-main .ItemList .ItemList-movies {
+.movies-main .ItemList .ItemList-movies, .movies-main .ItemList .ItemList-directors, .movies-main .ItemList .ItemList-actors, .directors-main .ItemList .ItemList-movies, .directors-main .ItemList .ItemList-directors, .directors-main .ItemList .ItemList-actors, .actors-main .ItemList .ItemList-movies, .actors-main .ItemList .ItemList-directors, .actors-main .ItemList .ItemList-actors {
   margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -72,7 +72,7 @@
       flex-wrap: wrap;
 }
 
-.movies-main .view-options {
+.movies-main .view-options, .directors-main .view-options, .actors-main .view-options {
   margin-top: 100px;
   position: -webkit-sticky;
   position: sticky;
@@ -81,7 +81,7 @@
   border-radius: 10px;
 }
 
-.movies-main .view-options .Filters, .movies-main .view-options .Sorting {
+.movies-main .view-options .Filters, .movies-main .view-options .Sorting, .directors-main .view-options .Filters, .directors-main .view-options .Sorting, .actors-main .view-options .Filters, .actors-main .view-options .Sorting {
   font-size: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -90,12 +90,12 @@
       flex-wrap: wrap;
 }
 
-.movies-main .view-options .Filters div, .movies-main .view-options .Sorting div {
+.movies-main .view-options .Filters div, .movies-main .view-options .Sorting div, .directors-main .view-options .Filters div, .directors-main .view-options .Sorting div, .actors-main .view-options .Filters div, .actors-main .view-options .Sorting div {
   border: gray solid 1px;
   border-radius: 15px;
 }
 
-.movies-main .view-options .Filters form, .movies-main .view-options .Sorting form {
+.movies-main .view-options .Filters form, .movies-main .view-options .Sorting form, .directors-main .view-options .Filters form, .directors-main .view-options .Sorting form, .actors-main .view-options .Filters form, .actors-main .view-options .Sorting form {
   width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -107,15 +107,15 @@
       flex-wrap: wrap;
 }
 
-.movies-main .view-options .Filters form .company, .movies-main .view-options .Sorting form .company {
+.movies-main .view-options .Filters form .company, .movies-main .view-options .Sorting form .company, .directors-main .view-options .Filters form .company, .directors-main .view-options .Sorting form .company, .actors-main .view-options .Filters form .company, .actors-main .view-options .Sorting form .company {
   width: 100%;
 }
 
-.movies-main .view-options .Filters form .company select, .movies-main .view-options .Sorting form .company select {
+.movies-main .view-options .Filters form .company select, .movies-main .view-options .Sorting form .company select, .directors-main .view-options .Filters form .company select, .directors-main .view-options .Sorting form .company select, .actors-main .view-options .Filters form .company select, .actors-main .view-options .Sorting form .company select {
   width: 100%;
 }
 
-.movies-main .view-options .Filters form .manu, .movies-main .view-options .Sorting form .manu {
+.movies-main .view-options .Filters form .manu, .movies-main .view-options .Sorting form .manu, .directors-main .view-options .Filters form .manu, .directors-main .view-options .Sorting form .manu, .actors-main .view-options .Filters form .manu, .actors-main .view-options .Sorting form .manu {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -128,11 +128,11 @@
       flex-wrap: wrap;
 }
 
-.movies-main .view-options .Filters form .manu label, .movies-main .view-options .Sorting form .manu label {
+.movies-main .view-options .Filters form .manu label, .movies-main .view-options .Sorting form .manu label, .directors-main .view-options .Filters form .manu label, .directors-main .view-options .Sorting form .manu label, .actors-main .view-options .Filters form .manu label, .actors-main .view-options .Sorting form .manu label {
   width: 100%;
 }
 
-.movies-main .view-options .Filters form .rgb, .movies-main .view-options .Sorting form .rgb {
+.movies-main .view-options .Filters form .rgb, .movies-main .view-options .Sorting form .rgb, .directors-main .view-options .Filters form .rgb, .directors-main .view-options .Sorting form .rgb, .actors-main .view-options .Filters form .rgb, .actors-main .view-options .Sorting form .rgb {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,24 +144,24 @@
   width: 100%;
 }
 
-.movies-main .view-options .Filters form .rgb input, .movies-main .view-options .Sorting form .rgb input {
+.movies-main .view-options .Filters form .rgb input, .movies-main .view-options .Sorting form .rgb input, .directors-main .view-options .Filters form .rgb input, .directors-main .view-options .Sorting form .rgb input, .actors-main .view-options .Filters form .rgb input, .actors-main .view-options .Sorting form .rgb input {
   width: 25%;
 }
 
-.movies-main .view-options .Filters form button, .movies-main .view-options .Sorting form button {
+.movies-main .view-options .Filters form button, .movies-main .view-options .Sorting form button, .directors-main .view-options .Filters form button, .directors-main .view-options .Sorting form button, .actors-main .view-options .Filters form button, .actors-main .view-options .Sorting form button {
   width: 75%;
   height: 55px;
 }
 
-.movies-main .view-options .Sorting {
+.movies-main .view-options .Sorting, .directors-main .view-options .Sorting, .actors-main .view-options .Sorting {
   margin-top: 50px;
 }
 
-.movies-main .view-options .Sorting .sort-select {
+.movies-main .view-options .Sorting .sort-select, .directors-main .view-options .Sorting .sort-select, .actors-main .view-options .Sorting .sort-select {
   width: 100%;
 }
 
-.movie-submit-form {
+.movie-submit-form, .actor-submit-form, .director-submit-form, .user-submit-form {
   margin: auto;
   width: 500px;
   display: -webkit-box;
@@ -171,7 +171,7 @@
       flex-wrap: wrap;
 }
 
-.movie-submit-form div {
+.movie-submit-form div, .actor-submit-form div, .director-submit-form div, .user-submit-form div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -180,19 +180,19 @@
   width: 100%;
 }
 
-.movie-submit-form div input {
+.movie-submit-form div input, .actor-submit-form div input, .director-submit-form div input, .user-submit-form div input {
   width: 100%;
 }
 
-.movie-submit-form .form-rgb input {
+.movie-submit-form .form-rgb input, .actor-submit-form .form-rgb input, .director-submit-form .form-rgb input, .user-submit-form .form-rgb input {
   height: 30px;
 }
 
-.movie-submit-form .form-imageurl textarea {
+.movie-submit-form .form-imageurl textarea, .actor-submit-form .form-imageurl textarea, .director-submit-form .form-imageurl textarea, .user-submit-form .form-imageurl textarea {
   min-width: 100%;
 }
 
-.movie-submit-form .error {
+.movie-submit-form .error, .actor-submit-form .error, .director-submit-form .error, .user-submit-form .error {
   color: red;
 }
 

@@ -2,67 +2,66 @@ import { connect } from "react-redux";
 import { Field, Form, Formik } from "formik"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
-import { addMovieAction, deleteMovieAction, updateMoviesAction, completeMovieAction } from "../../ducks/movies/MovieActions";
-import { getMovies } from "../../ducks/movies/MovieOperations";
-import { deleteMovie } from "../../ducks/movies/MovieOperations";
-import {v4 as uuidv4 } from 'uuid';
+import { addDirectorAction, deleteDirectorAction, updateDirectorsAction, completeDirectorAction } from "../../ducks/directors/DirectorActions";
+import { getDirectors } from "../../ducks/directors/DirectorOperations";
+import { deleteDirector } from "../../ducks/directors/DirectorOperations";
 const _ = require('lodash')
-const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
+const DirectorList = ({ directors, addDirectorAction, deleteDirectorAction, getDirectors, deleteDirector }, props) => {
 
-    const [moviesTemp, setMoviesTemp] = useState(movies)
+    const [directorsTemp, setDirectorsTemp] = useState(directors)
 
     useEffect(() => {
-        setMoviesTemp(movies)
-        if (movies.length === 0) {
-            getMovies()
+        setDirectorsTemp(directors)
+        if (directors.length === 0) {
+            getDirectors()
         }
-    }, [getMovies, movies])
+    }, [directors, getDirectors])
 
     
-    const getMoviesTemp = async (movie) => {
-        console.log("getting movies temp")
-        await getMovies()
-        setMoviesTemp(movies)
+    const getDirectorsTemp = async (director) => {
+        console.log("getting directors temp")
+        await getDirectors()
+        setDirectorsTemp(directors)
     }
     
-    const noMovies = () => {
-        if (moviesTemp.length === 0) {
-            return <button onClick={() => getMoviesTemp()}>Odswiez dane</button>
+    const noDirectors = () => {
+        if (directorsTemp.length === 0) {
+            return <button onClick={() => getDirectorsTemp()}>Odswiez dane</button>
         }
     }
 
-    const filterMovies = (values) => {
+    const filterDirectors = (values) => {
         console.log("filtering")
         console.log(values)
-        let filteredMovies = movies
+        let filteredDirectors = directors
         if (values.company) {
-            filteredMovies = _.filter(filteredMovies, { 'aib': values.company })
+            filteredDirectors = _.filter(filteredDirectors, { 'aib': values.company })
         }
         if (values.manu) {
-            filteredMovies = _.filter(filteredMovies, { 'company': values.manu })
+            filteredDirectors = _.filter(filteredDirectors, { 'company': values.manu })
         }
         if (values.rgb) {
-            filteredMovies = _.filter(filteredMovies, { 'rgb': true })
+            filteredDirectors = _.filter(filteredDirectors, { 'rgb': true })
         }
-        setMoviesTemp(filteredMovies)
+        setDirectorsTemp(filteredDirectors)
     }
 
-    const sortMovies = (values) => {
+    const sortDirectors = (values) => {
         console.log("sorting by " + values.type)
         if (values.type === "alphabet") {
-            setMoviesTemp(_.sortBy(moviesTemp, ['aib', 'name', 'model']))
+            setDirectorsTemp(_.sortBy(directorsTemp, ['aib', 'name', 'model']))
         }
         if (values.type === "datetime") {
-            setMoviesTemp(_.sortBy(moviesTemp, ['releaseDate', 'aib']))
+            setDirectorsTemp(_.sortBy(directorsTemp, ['releaseDate', 'aib']))
         }
         if (values.type === "score") {
-            setMoviesTemp(_.sortBy(moviesTemp, ['score', 'aib']))
+            setDirectorsTemp(_.sortBy(directorsTemp, ['score', 'aib']))
         }
     }
 
-    const getUrl = (movie) => {
-        if (movie.imageurl) {
-            return movie.imageurl
+    const getUrl = (director) => {
+        if (director.imageurl) {
+            return director.imageurl
         }
         else {
             return 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/movie-alt2-512.png'
@@ -71,8 +70,7 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
 
     return (
 
-        <div className="movies-main">
-            
+        <div className="directors-main">
 
 
             <div className="view-options">
@@ -84,14 +82,14 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
                             manu: '',
                             rgb: '',
                         }}
-                        onSubmit={(values) => filterMovies(values)}
+                        onSubmit={(values) => filterDirectors(values)}
                         enableReinitialize={true}>
                         <Form>
                             <div className="company">
                                 Firma karty
                                 <Field as="select" name="company">
                                     <option value="">Wybierz firme</option>
-                                    {_.uniq(_.map(movies, 'aib')).map(maker => <option key={uuidv4()} value={maker}>{maker}</option>)}
+                                    {/*_.uniq(_.map(directors, 'aib')).map(maker => <option key={maker} value={maker}>{maker}</option>)*/}
                                 </Field>
                             </div>
                             <div className="manu">
@@ -125,7 +123,7 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
                         initialValues={{
                             type: '',
                         }}
-                        onSubmit={(values) => sortMovies(values)}
+                        onSubmit={(values) => sortDirectors(values)}
                         enableReinitialize={true}>
                         <Form>
                             <div className="sort-select">
@@ -144,18 +142,18 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
                 </div>
             </div>
             <div className="ItemList">
-                <h5>Filmy</h5>
-                <Link to={`/movies/add`}> <button>Dodaj nowy film</button></Link>
-                {noMovies()}
-                <div className="ItemList-movies">
-                    {moviesTemp.map(movie => {
+                <h5>Reżyserowie</h5>
+                <Link to={`/directors/add`}> <button>Dodaj nowego reżysera</button></Link>
+                {noDirectors()}
+                <div className="ItemList-directors">
+                    {directorsTemp.map(director => {
                         return (
-                            <div className="Item" key={movie._id}>
-                                <Link to={`/movies/${movie._id}`}>
-                                    <img alt="" src={getUrl(movie)}></img>
-                                    {movie.name}
+                            <div className="Item" key={director._id}>
+                                <Link to={`/directors/${director._id}`}>
+                                    <img alt="" src={getUrl(director)}></img>
+                                    {director.name}
                                 </Link>
-                                <button onClick={() => deleteMovie(movie)}>Usuń</button>
+                                <button onClick={() => deleteDirector(director)}>Usuń</button>
                             </div>)
                     })}
                 </div>
@@ -166,20 +164,19 @@ const MovieList = ({ movies, getMovies, deleteMovie }, props) => {
 
 const mapStateToProps = (state) => {
     return {
-        
-        movies: state.movies,
+        directors: state.directors,
         downloaded: state.downloaded,
     };
 }
 
 const mapDispatchToProps = {
-    updateMoviesAction,
-    addMovieAction,
-    deleteMovieAction,
-    completeMovieAction,
-    getMovies,
-    deleteMovie
+    updateDirectorsAction,
+    addDirectorAction,
+    deleteDirectorAction,
+    completeDirectorAction,
+    getDirectors,
+    deleteDirector
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
+export default connect(mapStateToProps, mapDispatchToProps)(DirectorList);

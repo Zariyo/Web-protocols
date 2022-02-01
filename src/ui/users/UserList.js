@@ -3,9 +3,10 @@ import { Field, Form, Formik } from "formik"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { addUserAction, deleteUserAction } from "../../ducks/users/UserActions";
+import {v4 as uuidv4 } from 'uuid';
 const axios = require('axios')
 const _ = require('lodash')
-const Users = ({ users, addUserAction, deleteUserAction, downloaded }, props) => {
+const UsersList = ({ users, addUserAction, deleteUserAction }, props) => {
 
 
     const getUsers = async () => {
@@ -28,6 +29,7 @@ const Users = ({ users, addUserAction, deleteUserAction, downloaded }, props) =>
         if (users.length === 0) {
             getUsers()
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const deleteUser = async (user) => {
@@ -90,7 +92,7 @@ const Users = ({ users, addUserAction, deleteUserAction, downloaded }, props) =>
                                 Kraj firmy
                                 <Field as="select" name="country">
                                     <option value="">Wybierz kraj</option>
-                                    {_.uniq(_.map(users, 'country')).map(maker => <option key={maker} value={maker}>{maker}</option>)}
+                                    {_.uniq(_.map(users, 'country')).map(maker => <option key={uuidv4()} value={maker}>{maker}</option>)}
                                 </Field>
                             </div>
                             Tworzy karty dla:
@@ -131,7 +133,7 @@ const Users = ({ users, addUserAction, deleteUserAction, downloaded }, props) =>
             </div>
             <div className="ItemList">
                 <h5>Użytkownicy</h5>
-                <Link to={`/users/add`}> <button>Dodaj nowego usera</button></Link>
+                <Link to={`/users/add`}> <button>Dodaj nowego użytkownika</button></Link>
                 {noUsers()}
                 <div className="ItemList-movies">
                     {usersTemp.map(user => {
@@ -162,4 +164,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersList);

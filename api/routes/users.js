@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const data = require('../data.json')
 
 const User = require('../models/User');
+const Log = require('../models/Log')
 
 router.get('/', async (req, res) => {
   try {
@@ -44,7 +45,44 @@ router.post('/', async (req, res) => {
   }
 });
 
-
+router.post('/verify', async (req, res)=>{
+  try {
+    const user = await User.findById(req.body.id);
+    if(req.body.password===user.password){
+      const log = new Log({
+        username: user.username,
+        success: true,
+        loginDate: new Date().toISOString(),
+      })
+      try{
+        await log.save()
+        return res.status(201).send("Verification successful")
+      }
+      catch(err){
+        return res.status(400).send({error: err.message});
+      }
+      
+    }
+    else{
+      const log = new Log({
+        username: user.username,
+        success: false,
+        loginDate: new Date().toISOString(),
+      })
+      try{
+        await log.save()
+      return res.status(202).send("Verification unsuccessful")
+      }
+      catch(err){
+        return res.status(400).send({error: err.message});
+      }
+      
+    }
+  }
+  catch (err){
+    return res.status(500).send({error: err.message})
+  }
+})
 
 router.get('/:id', async (req, res) => {
 try {

@@ -4,6 +4,7 @@ const movies = require('./routes/movies');
 const users = require('./routes/users')
 const directors = require('./routes/directors')
 const actors = require('./routes/actors')
+const logs = require('./routes/logs')
 const cors = require('cors');
 
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use('/movies', movies);
 app.use('/users', users)
 app.use('/directors', directors)
 app.use('/actors', actors)
+app.use('/logs', logs)
 
 
 require('dotenv').config();

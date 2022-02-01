@@ -28,27 +28,75 @@
 	}
 	
 ],
-"users":
+	"users":
 [
 	{
 		"_id": "61e169981ed20c52c457c4f9",
 		"username": "adam02",
 		"email": "adam02@op.pl",
-		"password": "hash",
+		"password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
 		"imageurl": "https://logos-world.net/wp-content/uploads/2020/11/MSI-Logo-2011-2019.png"
 	},
 	{
 		"_id": "61e16a126176558a2bb636df",
 		"username": "krytykfilmowy",
 		"email": "krytyk.filmowy@gmail.com",
-		"password": "hash123"
+		"password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
 	},
 	{
 		"_id": "61e84b09edb7ef77f2898c43",
 		"username": "jankowal",
 		"email": "jkowal@wp.pl",
-		"password": "hash12345",
-		"imgurl": "https://www.amd.com/system/files/24937-sapphire-logo-1260x709.png"
+		"password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+		"imageurl": "https://www.amd.com/system/files/24937-sapphire-logo-1260x709.png"
 	}
-]
+],
+	"actors":
+	[
+		{
+			"_id": "61f99bfb74c2e9e0cd02b29c",
+			"name": "Leo",
+			"surname": "Cappy",
+			"birthDate": "1980-07-12",
+			"imageurl": ""
+		},
+		{
+			"_id": "61f99c02dd268fe9eca0fc7f",
+			"name": "Karola",
+			"surname": "Janowska",
+			"birthDate": "1950-02-26",
+			"imageurl": ""
+		},
+		{
+			"_id": "61f99c078effba8f23b3aeab",
+			"name": "Margaret",
+			"surname": "Robbin",
+			"birthDate": "1971-01-03",
+			"imageurl": ""
+		}
+],
+	"directors":
+	[
+		{
+			"_id": "61f99c0a74fdf892860a35f5",
+			"name": "Robert",
+			"surname": "Perro",
+			"birthDate": "1964-05-13",
+			"imageurl": ""
+		},
+		{
+			"_id": "61f99c0d167384cf8e880351",
+			"name": "Paweł",
+			"surname": "Pawłowski",
+			"birthDate": "1995-12-31",
+			"imageurl": ""
+		},
+		{
+			"_id": "61f99c1045507bb9f51a8dd8",
+			"name": "Sam",
+			"surname": "Johnson",
+			"birthDate": "1985-10-10",
+			"imageurl": ""
+		}
+	]
 }
